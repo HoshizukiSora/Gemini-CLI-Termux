@@ -18,7 +18,7 @@ except Exception:
 CODE_ASSIST_ENDPOINT = "https://cloudcode-pa.googleapis.com"
 
 # 客户端配置
-CLI_VERSION = "0.16.0"  # 当前 Gemini-CLI 版本
+CLI_VERSION = "0.20.0"  # 当前 Gemini-CLI 版本
 
 # OAuth 配置
 CLIENT_ID = "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com"
@@ -75,19 +75,6 @@ DEFAULT_SAFETY_SETTINGS = [
 
 # 基础模型列表（不含搜索和思考变体）
 BASE_MODELS = [
-    {
-        "name": "models/gemini-2.5-pro-preview-06-05",
-        "version": "001",
-        "displayName": "Gemini 2.5 Pro Preview 06-05",
-        "description": "Gemini 2.5 Pro Preview 06-05",
-        "inputTokenLimit": 1048576,
-        "outputTokenLimit": 65535,
-        "supportedGenerationMethods": ["generateContent", "streamGenerateContent"],
-        "temperature": 1.0,
-        "maxTemperature": 2.0,
-        "topP": 0.95,
-        "topK": 64
-    },
     {
         "name": "models/gemini-2.5-pro",
         "version": "001",

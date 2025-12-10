@@ -39,7 +39,6 @@
 - **Gemini 2.5 Flash**: 快速高效的多模态模型
 - **多版本支持**:
   - Gemini 3 Pro Preview
-  - Gemini 2.5 Pro Preview (06-05)
   - Gemini 2.5 Pro
   - Gemini 2.5 Flash
 - **模型变体**: 支持 search（搜索增强）、nothinking/maxthinking（思考模式）等变体
@@ -308,7 +307,6 @@ curl -H "x-goog-api-key: 123" http://127.0.0.1:8888/v1/models
 
 **Gemini 2.5 Pro 系列**：
 - `gemini-2.5-pro` - 高级多模态模型
-- `gemini-2.5-pro-preview-06-05` - 预览版本
 - `gemini-2.5-pro-search` - 搜索增强版
 - `gemini-2.5-pro-nothinking` - 无思考模式
 - `gemini-2.5-pro-maxthinking` - 最大思考模式

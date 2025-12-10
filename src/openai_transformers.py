@@ -252,11 +252,11 @@ def openai_request_to_gemini(openai_request: OpenAIChatCompletionRequest) -> Dic
             # 未指定 reasoning_effort，使用默认思考预算
             thinking_budget = get_thinking_budget(openai_request.model)
 
-        if thinking_budget is not None:
-            request_payload["generationConfig"]["thinkingConfig"] = {
-                "thinkingBudget": thinking_budget,
-                "includeThoughts": should_include_thoughts(openai_request.model)
-            }
+    if thinking_budget is not None:
+        request_payload["generationConfig"]["thinkingConfig"] = {
+            "thinkingBudget": thinking_budget,
+            "includeThoughts": should_include_thoughts(openai_request.model)
+        }
     
     return request_payload
 

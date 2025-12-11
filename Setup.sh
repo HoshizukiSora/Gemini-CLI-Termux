@@ -303,8 +303,10 @@ start_reverse_proxy() {
     }
     check_file_exists "run.py"
     pkill -f "python.*run.py"
+    command_exists termux-wake-lock && termux-wake-lock
     echo -e "${GREEN}${BOLD}>> 正在启动服务...${NC}\n"
     python run.py
+    command_exists termux-wake-unlock && termux-wake-unlock
     echo -e "\n${CYAN}${BOLD}================================${NC}"
 }
 

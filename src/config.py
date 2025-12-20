@@ -160,7 +160,7 @@ def _generate_thinking_variants():
     1. nothinking 变体：最小化思考预算，快速响应
     2. maxthinking 变体：最大化思考预算，深度推理
 
-    仅适用于支持思考的模型系列：gemini-2.5-flash、gemini-2.5-pro、gemini-3-pro
+    仅适用于支持思考的模型系列：gemini-2.5-flash、gemini-2.5-pro、gemini-3-flash、gemini-3-pro
 
     返回：
         list: 思考模式变体列表
@@ -168,9 +168,9 @@ def _generate_thinking_variants():
     thinking_models = []
     for model in BASE_MODELS:
         # 仅为支持内容生成且具备思考能力的模型创建变体
-        # 适用模型：gemini-2.5-flash、gemini-2.5-pro、gemini-3-pro
+        # 适用模型：gemini-2.5-flash、gemini-2.5-pro、gemini-3-flash、gemini-3-pro
         if ("generateContent" in model["supportedGenerationMethods"] and
-            ("gemini-2.5-flash" in model["name"] or "gemini-2.5-pro" in model["name"] or "gemini-3-pro" in model["name"])):
+            ("gemini-2.5-flash" in model["name"] or "gemini-2.5-pro" in model["name"] or "gemini-3-flash" in model["name"] or "gemini-3-pro" in model["name"])):
 
             # 创建 -nothinking 变体（禁用或最小化思考）
             nothinking_variant = model.copy()
@@ -193,9 +193,9 @@ def _generate_combined_variants():
     combined_models = []
     for model in BASE_MODELS:
         # 仅为支持内容生成的模型创建组合变体
-        # 适用模型：gemini-2.5-flash、gemini-2.5-pro、gemini-3-pro
+        # 适用模型：gemini-2.5-flash、gemini-2.5-pro、gemini-3-flash、gemini-3-pro
         if ("generateContent" in model["supportedGenerationMethods"] and
-            ("gemini-2.5-flash" in model["name"] or "gemini-2.5-pro" in model["name"] or "gemini-3-pro" in model["name"])):
+            ("gemini-2.5-flash" in model["name"] or "gemini-2.5-pro" in model["name"] or "gemini-3-flash" in model["name"] or "gemini-3-pro" in model["name"])):
             
             # 搜索 + 无思考模式
             search_nothinking = model.copy()
@@ -212,9 +212,9 @@ def _generate_combined_variants():
             combined_models.append(search_maxthinking)
     return combined_models
 
-# 完整的支持模型列表（包括基础模型、搜索变体和思考变体）
+# 完整的支持模型列表（包括基础模型、搜索变体、思考变体和组合变体）
 # 合并所有模型并按名称排序，以便将变体分组展示
-all_models = BASE_MODELS + _generate_search_variants() + _generate_thinking_variants()
+all_models = BASE_MODELS + _generate_search_variants() + _generate_thinking_variants() + _generate_combined_variants()
 SUPPORTED_MODELS = sorted(all_models, key=lambda x: x['name'])
 
 # 工具函数：提取基础模型名称
@@ -283,13 +283,13 @@ def get_thinking_budget(model_name):
 
     if is_nothinking_model(model_name):
         # nothinking 变体：最小化思考
-        if "gemini-2.5-flash" in base_model:
+        if "gemini-2.5-flash" in base_model or "gemini-3-flash" in base_model:
             return 0  # flash 模型完全禁用思考
         elif "gemini-2.5-pro" in base_model or "gemini-3-pro" in base_model:
             return 128  # pro 模型保留最小思考预算（完全禁用可能影响质量）
     elif is_maxthinking_model(model_name):
         # maxthinking 变体：最大化思考
-        if "gemini-2.5-flash" in base_model:
+        if "gemini-2.5-flash" in base_model or "gemini-3-flash" in base_model:
             return 24576  # flash 最大思考预算
         elif "gemini-2.5-pro" in base_model or "gemini-3-pro" in base_model:
             return 32768  # pro 最大思考预算

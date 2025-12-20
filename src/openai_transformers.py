@@ -232,7 +232,7 @@ def openai_request_to_gemini(openai_request: OpenAIChatCompletionRequest) -> Dic
             base_model = get_base_model_name(openai_request.model)
             if reasoning_effort == "minimal":
                 # 最小推理力度（与 nothinking 模式相同）
-                if "gemini-2.5-flash" in base_model:
+                if "gemini-2.5-flash" in base_model or "gemini-3-flash" in base_model:
                     thinking_budget = 0
                 elif "gemini-2.5-pro" in base_model or "gemini-3-pro" in base_model:
                     thinking_budget = 128
@@ -242,7 +242,7 @@ def openai_request_to_gemini(openai_request: OpenAIChatCompletionRequest) -> Dic
                 thinking_budget = -1
             elif reasoning_effort == "high":
                 # 高推理力度（与 maxthinking 模式相同）
-                if "gemini-2.5-flash" in base_model:
+                if "gemini-2.5-flash" in base_model or "gemini-3-flash" in base_model:
                     thinking_budget = 24576
                 elif "gemini-2.5-pro" in base_model:
                     thinking_budget = 32768

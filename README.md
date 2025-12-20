@@ -35,10 +35,12 @@
 
 ### 🤖 Gemini 模型全系列支持
 - **Gemini 3 Pro**: 🌟 最新一代高级多模态模型，支持超长上下文（1M tokens）
+- **Gemini 3 Flash**: 🌟最新一代快速高效的多模态模型
 - **Gemini 2.5 Pro**: 高级多模态模型，支持超长上下文（1M tokens）
 - **Gemini 2.5 Flash**: 快速高效的多模态模型
 - **多版本支持**:
   - Gemini 3 Pro Preview
+  - Gemini 3 Flash Preview
   - Gemini 2.5 Pro
   - Gemini 2.5 Flash
 - **模型变体**: 支持 search（搜索增强）、nothinking/maxthinking（思考模式）等变体
@@ -305,6 +307,12 @@ curl -H "x-goog-api-key: 123" http://127.0.0.1:8888/v1/models
 - `gemini-3-pro-preview-nothinking` - 无思考模式
 - `gemini-3-pro-preview-maxthinking` - 最大思考模式
 
+**Gemini 3 Flash 系列** 🌟：
+- `gemini-3-flash-preview` - 最新一代快速多模态模型
+- `gemini-3-flash-preview-search` - 搜索增强版
+- `gemini-3-flash-preview-nothinking` - 无思考模式
+- `gemini-3-flash-preview-maxthinking` - 最大思考模式
+
 **Gemini 2.5 Pro 系列**：
 - `gemini-2.5-pro` - 高级多模态模型
 - `gemini-2.5-pro-search` - 搜索增强版
@@ -318,8 +326,8 @@ curl -H "x-goog-api-key: 123" http://127.0.0.1:8888/v1/models
 - `gemini-2.5-flash-maxthinking` - 最大思考模式
 
 **思考模式说明**：
-- **nothinking**: 思考预算最小化（2.5 Flash: 0 tokens, 2.5 Pro/3 Pro: 128 tokens）
-- **maxthinking**: 思考预算最大化（2.5 Flash: 24576 tokens, 2.5 Pro/3 Pro: 32768 tokens）
+- **nothinking**: 思考预算最小化（2.5 Flash/3 Flash: 0 tokens, 2.5 Pro/3 Pro: 128 tokens）
+- **maxthinking**: 思考预算最大化（2.5 Flash/3 Flash: 24576 tokens, 2.5 Pro/3 Pro: 32768 tokens）
 - **默认模式**: 自动平衡的思考预算
 
 </details>
@@ -774,6 +782,6 @@ pydantic<2.0           # 数据验证和序列化
 
 **⭐ 如果这个项目对你有帮助，请给个 Star 支持一下！⭐**
 
-*最后更新：2025年11月8日*
+*最后更新：2025年12月20日*
 
 </div>

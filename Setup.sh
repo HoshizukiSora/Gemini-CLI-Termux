@@ -161,7 +161,8 @@ install_gemini_cli_termux() {
     local install_errors=0
     install_package_if_missing "python" "python" "Python" || install_errors=1
     install_package_if_missing "git" "git" "Git" || install_errors=1
-    install_package_if_missing "curl" "curl" "curl" || install_errors=1
+    install_package_if_missing "curl" "curl" "Curl" || install_errors=1
+	install_package_if_missing "python-cryptography" "python-cryptography" "Python-Cryptography" || install_errors=1
 
     if [ "$install_errors" -ne 0 ]; then
         echo -e "${RED}${BOLD}>> 必要依赖安装失败，请修复上述错误后重新执行脚本。${NC}"
